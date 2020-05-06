@@ -9,12 +9,15 @@ import {ProfileMainComponent} from './components/profile/profile-main/profile-ma
 import {ChatMainComponent} from './components/chat/chat-main/chat-main.component';
 import {ClientListComponent} from './components/client/client-list/client-list.component';
 import {ClientDetailComponent} from './components/client/client-detail/client-detail.component';
+import {LoginComponent} from './components/auth/login/login.component';
+import {LoggedInGuard} from 'ngx-auth-firebaseui';
 
 // -- ROUTER --
 
 const routes: Routes = [
   {
     path: 'dashboard',
+    canActivate: [LoggedInGuard],
     component: DashboardMainComponent,
     data: {
       title: 'mainDashboard',
@@ -28,6 +31,7 @@ const routes: Routes = [
   },
   {
     path: 'client',
+    canActivate: [LoggedInGuard],
     children: [
       {
         path: '',
@@ -59,6 +63,7 @@ const routes: Routes = [
   },
   {
     path: 'profile',
+    canActivate: [LoggedInGuard],
     children: [
       {
         path: '',
@@ -77,6 +82,7 @@ const routes: Routes = [
   },
   {
     path: 'chat',
+    canActivate: [LoggedInGuard],
     children: [
       {
         path: '',
@@ -94,15 +100,36 @@ const routes: Routes = [
     ]
   },
   {
+    path: 'login',
+    children: [
+      {
+        path: '',
+        component: LoginComponent,
+        data: {
+          title: 'Login',
+          breadcrumb: [
+            {
+              label: 'Login',
+              url: 'login'
+            }
+          ]
+        }
+      },
+    ]
+  },
+  {
     path        : 'exercise',
+    canActivate: [LoggedInGuard],
     loadChildren: () => import('./components/exercise/exercise.module').then(m => m.ExerciseModule)
   },
   {
     path        : 'workout',
+    canActivate: [LoggedInGuard],
     loadChildren: () => import('./components/workout/workout.module').then(m => m.WorkoutModule)
   },
   {
     path        : 'meal',
+    canActivate: [LoggedInGuard],
     loadChildren: () => import('./components/meal/meal.module').then(m => m.MealModule)
   },
   // todo 404 page

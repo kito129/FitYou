@@ -5,6 +5,8 @@ import {Exercise} from '../../../common/exercise';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {DialogDeleteExerciseComponent} from '../dialog-delete/dialog-delete-exercise.component';
 import {Subject} from 'rxjs';
+import {AuthProcessService} from 'ngx-auth-firebaseui';
+import {AuthService} from '../../../services/auth/auth.service';
 
 @Component({
   selector: 'app-exercise-list',

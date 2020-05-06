@@ -4,7 +4,7 @@
   <div fxLayout="row" fxLayoutGap="10px" fxFlexAlign="space-around">
     <!-- IMMAGE -->
     <div fxLayout="row" fxFlex="15" fxFlex.lt-sm="30">
-      <img alt="ciao" src="../../../../assets/images/temp.png">
+      <img alt="ciao" src="{{user.photoURL}}">
     </div>
     <!-- FIRST INFO -->
     <div fxLayout="row" fxFlex="85" fxFlex.lt-sm="70">
@@ -28,9 +28,12 @@
       <div></div>
       <div></div>
       <h2 class="mat-h2"><b>Nome:</b> </h2>
-      <h3 class="mat-h3">Marco Selva</h3>
+      <h3 class="mat-h3">{{user.displayName}}</h3>
+
       <h2 class="mat-h2"><b>Mail:</b> </h2>
-      <h3 class="mat-h3">marco.96.12@gmail.com</h3>
+
+      <h3 class="mat-h3">{{user.email}}</h3>
+
       <h2 class="mat-h2"><b>Password</b> </h2>
       <h3 class="mat-h3">*******</h3>
       <div fxFlex="100" fxLayout="row" fxLayoutAlign="baseline" fxLayoutGap="6px" >

@@ -10,14 +10,21 @@
     <mat-nav-list>
       <div routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
         <mat-accordion multi="false">
-          <a mat-list-item routerLink="/dashboard" routerLinkActive="active-list-item"><mat-icon style="padding: 5px;">dashboard</mat-icon>Dashboard</a>
-          <a mat-list-item routerLink="/exercise" routerLinkActive="active-list-item"><mat-icon style="padding: 5px;">emoji_people</mat-icon>Esercizi</a>
-          <a mat-list-item routerLink="/workout" routerLinkActive="active-list-item"><mat-icon style="padding: 5px;">directions_run</mat-icon>Workout</a>
-          <a mat-list-item routerLink="/meal" routerLinkActive="active-list-item"><mat-icon style="padding: 5px;">local_dining</mat-icon>Nutrizione</a>
 
-          <a mat-list-item routerLink="/client" routerLinkActive="active-list-item"><mat-icon style="padding: 5px;">dynamic_feed</mat-icon>Clienti</a>
-          <a mat-list-item routerLink="/chat" routerLinkActive="active-list-item"><mat-icon style="padding: 5px;">question_answer</mat-icon>Chat</a>
-          <a mat-list-item routerLink="/profile" routerLinkActive="active-list-item"><mat-icon style="padding: 5px;">account_box</mat-icon>Profilo</a>
+          <div *ngIf="user!==null">
+            <a mat-list-item routerLink="/dashboard" routerLinkActive="active-list-item"><mat-icon style="padding: 5px;">dashboard</mat-icon>Dashboard</a>
+            <a mat-list-item routerLink="/exercise" routerLinkActive="active-list-item"><mat-icon style="padding: 5px;">emoji_people</mat-icon>Esercizi</a>
+            <a mat-list-item routerLink="/workout" routerLinkActive="active-list-item"><mat-icon style="padding: 5px;">directions_run</mat-icon>Workout</a>
+            <a mat-list-item routerLink="/meal" routerLinkActive="active-list-item"><mat-icon style="padding: 5px;">local_dining</mat-icon>Nutrizione</a>
+
+            <a mat-list-item routerLink="/client" routerLinkActive="active-list-item"><mat-icon style="padding: 5px;">dynamic_feed</mat-icon>Clienti</a>
+            <a mat-list-item routerLink="/chat" routerLinkActive="active-list-item"><mat-icon style="padding: 5px;">question_answer</mat-icon>Chat</a>
+            <a mat-list-item routerLink="/profile" routerLinkActive="active-list-item"><mat-icon style="padding: 5px;">account_box</mat-icon>Profilo</a>
+          </div>
+          <a mat-list-item routerLink="/login" routerLinkActive="active-list-item"><mat-icon style="padding: 5px;">fingerprint</mat-icon>
+            <div *ngIf="user!==null">Logout</div>
+            <div *ngIf="user===null">Login</div>
+          </a>
 
         </mat-accordion>
       </div>
@@ -36,7 +43,8 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>FitYou.app</span>
-
+      <span fxFlex></span>
+      <ngx-auth-firebaseui-avatar (onSignOut)="exit()"></ngx-auth-firebaseui-avatar>
     </mat-toolbar>
     <!-- MAIN CONTENT -->
     <main class="content">
