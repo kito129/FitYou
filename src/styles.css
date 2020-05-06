@@ -1,0 +1,43 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Roboto", sans-serif; }
+
+.mainContainer {
+  margin-top: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  flex-wrap: wrap;
+}
+
+.titlePad{
+  margin-bottom: 10px;
+}
+
+.mat-bottom-sheet-container {
+  min-width: 350px !important;
+  max-width: 350px !important;
+}
+
+
+.mat-bottom-sheet-container-medium {
+  min-width: 350px !important;
+  max-width: 350px !important;
+}
+
+.mat-bottom-sheet-container-large {
+  min-width: 350px !important;
+  max-width: 350px !important;
+}
+
+.mat-bottom-sheet-container-xlarge {
+  min-width: 350px !important;
+  max-width: 350px !important;
+}
+
+
+.alert{
+  /* for validation*/
+  color: lightcoral;
+  padding: 5px;
+}

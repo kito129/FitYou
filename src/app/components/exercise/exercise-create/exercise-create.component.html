@@ -1,0 +1,75 @@
+<div fxLayout="row warp">
+  <!-- COL 1-->
+  <div fxFlex="50" fxFlex.lt-md="100" fxLayout="column" fxLayoutGap="15px">
+    <h2 class="mat-h2 ">Info</h2>
+    <mat-divider  style="padding-bottom: 10px"></mat-divider>
+    <!-- ROW 1-->
+    <div  fxLayout="column">
+      <form #exerciseForm="ngForm"  fxLayoutGap="15px">
+        <mat-form-field class="half-width">
+          <mat-label>Nome</mat-label>
+          <label>
+            <input matInput placeholder="Ex. French press.." [(ngModel)]="exercise.name" name="name" type="text" required #name="ngModel">
+          </label>
+        </mat-form-field>
+        <div [hidden]="name.valid || name.pristine"
+             class="alert">
+          Nome richiesto
+        </div>
+        <!-- description -->
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Descrizione...</mat-label>
+          <label>
+            <textarea
+              cdkTextareaAutosize
+              #autosize="cdkTextareaAutosize"
+              cdkAutosizeMinRows="3"
+              matInput placeholder="Ex. Alza con le braccia.." [(ngModel)]="exercise.description" name="description" type="text" required #description="ngModel"> </textarea>
+          </label>
+        </mat-form-field>
+        <div [hidden]="description.valid || description.pristine"
+             class="alert">
+          Descrizione richiesta
+        </div>
+      </form>
+    </div>
+    <!-- ROW 4-->
+    <div fxLayout="column" fxLayoutGap="15px">
+      <input type="file" (change)="onFileSelected($event)">
+      <button mat-raised-button color="warn"  style="width: 160px" (click)="uploadClick()" [disabled]="disabledUpload"> <mat-icon style="padding-right: 5px">cloud_upload</mat-icon> Upload video</button>
+      <div  *ngIf="progressBar==true" >
+        <mat-progress-bar mode="determinate" [value]="progress"></mat-progress-bar>
+      </div>
+      <div  *ngIf="uploadedVideoConfirm==true" >
+        <p>Video caricato!</p>
+      </div>
+    </div>
+    <!-- ROW 5-->
+    <div fxLayout="row" fxLayoutGap="15 px">
+      <button mat-raised-button color="primary" [disabled]="!(disabledCreate && exerciseForm.form.valid)" style="width: 160px" (click)="createClick()"> Crea Esercizio </button>
+      <button mat-raised-button color="accent" routerLink="/exercise" style="width: 160px"> Annulla </button>
+    </div>
+  </div>
+  <!-- COL 2-->
+  <div fxFlex="50" fxFlex.lt-md="100" fxLayout="column" fxLayoutGap="10px">
+    <h2 class="mat-h2 ">Anteprima</h2>
+    <mat-divider  style="padding-bottom: 10px"></mat-divider>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>{{exercise.name}}</mat-card-title>
+        <mat-card-subtitle>{{exercise.dateCreated | date:'short'}}</mat-card-subtitle>
+      </mat-card-header>
+      <video width="320" height="240" controls>
+        <source src='{{exercise.urlLink }}'>
+
+        Your browser does not support the video tag.
+      </video>
+      <mat-card-content>
+        <p>
+          {{exercise.description}}
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+

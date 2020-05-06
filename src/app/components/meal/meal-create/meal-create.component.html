@@ -1,0 +1,71 @@
+<div fxFlex="100" fxLayout="column">
+  <!--MAIN-->
+  <div fxLayout="column">
+    <!--title -->
+    <h2 class="mat-h2">Piano da Creare</h2>
+    <mat-divider></mat-divider>
+    <!--name -->
+    <form #mealForm="ngForm">
+
+
+      <div fxLayout="column">
+        <mat-form-field appearance="fill">
+          <mat-label>Nome Dieta</mat-label>
+          <label>
+            <input matInput placeholder="Ex. Dimagrimento.." [(ngModel)]="meal.name" name="name" type="text" required #name="ngModel">
+          </label>
+        </mat-form-field>
+        <div [hidden]="name.valid || name.pristine"
+             class="alert">
+          Nome Richiesto
+        </div>
+      </div>
+      <div fxLayout="column">
+        <!-- client -->
+        <mat-form-field>
+          <mat-label>Seleziona cliente</mat-label>
+          <mat-select [(ngModel)]="mealKeySelected" name="client" required #client="ngModel" >
+            <mat-option>None</mat-option>
+            <mat-option value="Matteo Bagnasco">Matteo Bagnasco</mat-option>
+            <mat-option value="Kevin Della Piazza">Kevin Della Piazza</mat-option>
+            <mat-option value="Martinetti Ferma">Martinetti Ferma</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div [hidden]="client.valid || client.pristine"
+             class="alert">
+          Client richiesto
+        </div>
+
+      </div>
+
+      <div fxLayout="column">
+        <!--title -->
+        <h2 class="mat-h2" style="padding-top: 10px; padding-bottom: 10px; ">Descrizione dieta</h2>
+        <!-- description -->
+        <mat-form-field  class="description-form" appearance="fill">
+          <mat-label>Descrizione...</mat-label>
+          <label>
+                <textarea
+                  cdkTextareaAutosize
+                  #autosize="cdkTextareaAutosize"
+                  cdkAutosizeMinRows="3"
+                  matInput placeholder="Ex. Dieta per.."  [(ngModel)]="meal.description"  name="description" type="text" required #description="ngModel"> </textarea>
+          </label>
+        </mat-form-field>
+        <div [hidden]="description.valid || description.pristine"
+             class="alert">
+          Descrizione richiesta
+        </div>
+      </div>
+
+
+    </form>
+  </div>
+  <!-- BUTTON SECTION -->
+  <div fxLayout="row" fxFlexAlign="center center" fxLayoutGap="25px">
+    <button mat-raised-button color="primary" (click)="addMeal()" [disabled]="!mealForm.form.valid">Crea Dieta</button>
+    <button mat-raised-button color="accent" routerLink="/meal"> Annulla </button>
+  </div>
+</div>
+
+

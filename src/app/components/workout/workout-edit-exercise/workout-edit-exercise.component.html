@@ -1,0 +1,42 @@
+<div fxLayout="column" fxLayoutGap="10px" style="align-items: center">
+  <!-- REPS SECTION-->
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Reps</mat-label>
+      <label>
+        <input matInput name="reps" [(ngModel)]="data.detail.reps" type="number" min="0">
+      </label>
+    </mat-form-field>
+  </div>
+  <!-- SERIES SECTION-->
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Serie</mat-label>
+      <label>
+        <input matInput  [(ngModel)]="data.detail.series" name="series" type="number" min="0">
+      </label>
+    </mat-form-field>
+  </div>
+  <!-- WEIGHT SECTION-->
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Peso</mat-label>
+      <label>
+        <input matInput  [(ngModel)]="data.detail.weight" name="weight" type="number" min="0">
+      </label>
+    </mat-form-field>
+  </div>
+  <!-- PAUSE SECTION-->
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Pausa</mat-label>
+      <label>
+        <input matInput [(ngModel)]="data.detail.pauseTime" name="pause" type="number" min="0">
+      </label>
+    </mat-form-field>
+  </div>
+  <!-- BUTTON SECTION-->
+  <button mat-raised-button color="primary" (click)="openLink($event)">Conferma</button>
+</div>
+
+

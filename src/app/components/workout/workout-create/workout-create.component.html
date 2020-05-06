@@ -1,0 +1,157 @@
+<!--MAIN ROW WARP-->
+<div fxLayout="row" fxLayout.lt-md="column">
+  <!--CREATE - ROW 1 -->
+  <div fxFlex="50"  fxFlex.lt-md="100" fxLayoutGap="10px" fxLayout="column">
+    <!-- WORK OUT INFO -->
+    <!--title -->
+    <h2 class="mat-h2">Workout da Creare</h2>
+    <mat-divider></mat-divider>
+    <!--name -->
+    <form #workoutCreateForm="ngForm">
+      <div  fxLayout="column">
+        <mat-form-field>
+          <mat-label>Nome Workout</mat-label>
+          <label>
+            <input matInput placeholder="Ex. Massa.." [(ngModel)]="workout.name" name="name" type="text" required #name="ngModel">
+          </label>
+        </mat-form-field>
+        <div [hidden]="name.valid || name.pristine"
+             class="alert">
+          Nome richiesto
+        </div>
+        <!-- description -->
+        <mat-form-field  class="description-form" appearance="fill">
+          <mat-label>Descrizione...</mat-label>
+          <label>
+              <textarea
+                cdkTextareaAutosize
+                #autosize="cdkTextareaAutosize"
+                cdkAutosizeMinRows="3"
+                matInput placeholder="Ex. Workout per.."  [(ngModel)]="workout.description"  name="description" type="text" required #description="ngModel"> </textarea>
+          </label>
+        </mat-form-field>
+        <div [hidden]="description.valid || description.pristine"
+             class="alert">
+          Descrizione richiesta
+        </div>
+      </div>
+    </form>
+    <!-- SELECTION INFO -->
+    <!--title -->
+    <h2 class="mat-h2" style="padding-top: 10px; padding-bottom: 10px; ">Selezione Esercizi</h2>
+    <mat-divider></mat-divider>
+    <!-- exercise -->
+    <mat-form-field >
+      <mat-label>Seleziona esercizio</mat-label>
+      <mat-select [(value)]="exerciseKeySelected" (selectionChange)="onValueChange()">
+        <mat-option>None</mat-option>
+        <mat-option *ngFor="let exe of exercises" value="{{exe.key}}" >{{exe.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- description-->
+    <h3 class="mat-h3">Descrizione:</h3>
+    <p>{{getExerciseDescriptionByKey(exerciseKeySelected)}}</p>
+
+    <!-- EXERCISE SETTING -->
+    <h3 class="mat-h3">Parametri esercizio:</h3>
+    <div fxLayoutGap="5px" fxLayout="row" fxLayout.lt-md="column" class="params">
+      <!-- reps -->
+      <div fxFlex.gt-md="25">
+        <mat-form-field class="paramsExe">
+          <mat-label>Reps</mat-label>
+          <label>
+            <input matInput [(ngModel)]="workoutDetailExercise.reps" name="reps" type="number" min="0" (change)="onValueChange()">
+          </label>
+        </mat-form-field>
+      </div>
+      <!-- series -->
+      <div fxFlex.gt-md="25">
+        <mat-form-field class="paramsExe">
+          <mat-label>Serie</mat-label>
+          <label>
+            <input matInput [(ngModel)]="workoutDetailExercise.series" name="series" type="number" min="0" (change)="onValueChange()">
+          </label>
+        </mat-form-field>
+      </div>
+      <!-- weigh -->
+      <div fxFlex.gt-md="25">
+        <mat-form-field class="paramsExe">
+          <mat-label>Peso</mat-label>
+          <label>
+            <input matInput [(ngModel)]="workoutDetailExercise.weight" name="weight" type="number" min="0">
+          </label>
+        </mat-form-field>
+      </div>
+      <!-- pause -->
+      <div fxFlex.gt-md="25">
+        <mat-form-field class="paramsExe">
+          <mat-label>Recupero (sec)</mat-label>
+          <label>
+            <input matInput [(ngModel)]="workoutDetailExercise.pauseTime" name="weight" type="number" min="0" (change)="onValueChange()">
+          </label>
+        </mat-form-field>
+      </div>
+    </div>
+    <!-- BUTTON SECTION-->
+    <div fxLayoutGap="35px" fxLayoutAlign="center center" fxLayout="row">
+      <button mat-fab color="primary" (click)="addExercise()"  [disabled]="addExerciseDisabled">+</button>
+    </div>
+  </div>
+
+
+  <!--PREVIEW - ROW 2 -->
+  <div fxFlex="50"  fxFlex.lt-lg="100" fxLayoutGap="10px" fxLayout="column" >
+    <!-- title -->
+    <h2 class="mat-h2">Anterpima</h2>
+    <mat-divider></mat-divider>
+    <!--preview list-->
+    <mat-list>
+      <!--element list-->
+      <mat-list-item *ngFor="let item of workout.exerciseList" >
+        <!--main row -->
+        <!--TITLE -->
+        <div fxLayout="row" fxFlex="30" fxFlex.lt-sm="70">
+          {{item.order }} - {{getExerciseNameByKey(item.exerciseKey)}}
+        </div>
+        <!--INFO -->
+        <div fxLayout="row" fxLayout.lt-sm="column" fxFlex="55" fxLayoutGap="10px" fxHide.lt-sm="true">
+
+          <div fxLayout="row">
+            {{item.series}}
+            X
+            {{item.reps}}
+          </div>
+          <div fxLayout="row">
+            <b>P:</b>
+            {{item.weight}} kg
+          </div>
+          <div fxLayout="row">
+            <b>T:</b>
+            {{item.pauseTime}} sec
+          </div>
+
+        </div>
+        <!--BUTTON -->
+        <div fxLayout="row" fxFlex="15" fxFlex.lt-sm="30" fxFlexAlign="flex-end flex-end">
+          <!-- BUTTON 2 -->
+          <button mat-icon-button color="accent" (click)="openBottomSheet(item)">
+            <mat-icon>settings</mat-icon>
+          </button>
+          <!-- BUTTON 2 -->
+          <button mat-icon-button color="primary" (click)="removeExercise(item.exerciseKey,item.order)">
+            <mat-icon>remove_circle_outline</mat-icon>
+          </button>
+        </div>
+
+      </mat-list-item>
+    </mat-list>
+    <mat-divider></mat-divider>
+    <!-- BUTTON SECTION-->
+    <div fxLayoutGap="25px" fxLayout="row" fxLayout.lt-md="column" class="button" >
+      <button class="final-button" mat-raised-button color="primary" (click)="addWorkout()" [disabled]="!(workoutCreateForm.form.valid && workout.exerciseList.length!=0)">Crea Allenamento</button>
+      <button class="final-button" mat-raised-button color="accent"  routerLink="/workout">Annulla</button>
+    </div>
+  </div>
+</div>
+

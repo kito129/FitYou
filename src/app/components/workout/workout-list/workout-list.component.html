@@ -1,0 +1,102 @@
+<!--MAIN ROW WARP-->
+<div fxLayout="column" fxLayoutGap="15px">
+  <!--TITLE ROW -->
+  <div  fxLayout="row">
+    <button mat-raised-button color="primary" routerLink="/workout/create/">Crea Nuovo</button>
+  </div>
+  <mat-divider  style="padding-bottom: 10px"></mat-divider>
+  <!-- MAIN ROW-->
+  <div fxLayout="column" >
+    <mat-accordion>
+
+      <mat-expansion-panel (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false"
+                           *ngFor="let workout of workouts"
+      >
+        <!-- WORKOUT MAIN INFO-->
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{workout.name}}
+          </mat-panel-title>
+          <mat-panel-description>
+            {{workout.description}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <!-- INFO WORK OUT -->
+        <div fxLayout="column" fxLayoutAlign="baseline" fxLayoutGap="6px" >
+          <h3 class="mat-h3">Descrizione:</h3>
+          <p class="description-text">{{workout.description}}</p>
+          <h3 class="mat-h3">Esercizi inclusi:</h3>
+          <!-- TABLE EXERCISE-->
+          <mat-accordion class="mat-elevation-z8">
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                 (closed)="panelOpenState = false"
+                                 *ngFor="let exercise of workout.exerciseList"
+            >
+              <mat-expansion-panel-header>
+                <!-- TITLE WORKOUT-->
+                <mat-panel-title>
+                  {{exercise.order}} - {{getExerciseNameByKey(exercise.exerciseKey)}}
+                </mat-panel-title>
+                <mat-panel-description>
+
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <!-- EXERCISE DETAIL -->
+              <div fxLayout="row" fxLayout.lt-md="column">
+                <div fxLayout="column" fxFlex="50" fxFlex.lt-md="100">
+                  <div fxLayout="column" fxLayoutGap="5px">
+                    <p><b>Descrizione: </b></p>
+                    <p class="description-text">{{getExerciseDescriptionByKey(exercise.exerciseKey)}}</p>
+                  </div>
+
+                  <div fxLayout="row" fxLayoutGap="5px">
+                    <p><b>Reps: </b></p>
+                    <p>{{exercise.reps}}</p>
+                  </div>
+
+                  <div fxLayout="row" fxLayoutGap="5px">
+                    <p><b>Serie: </b></p>
+                    <p>{{exercise.series}}</p>
+                  </div>
+
+                  <div fxLayout="row" fxLayoutGap="5px" *ngIf="exercise.weight>0">
+                    <p><b>Peso: </b></p>
+                    <p>{{exercise.weight}}</p>
+                  </div>
+
+                  <div fxLayout="row" fxLayoutGap="5px">
+                    <p><b>Recupero: </b></p>
+                    <p>{{exercise.pauseTime}}</p>
+                  </div>
+
+                </div>
+                <!-- EXERCISE VIDEO -->
+                <div fxLayout="column" fxFlex="50" fxFlex.lt-md="100" style="align-items: center">
+
+                  <p><b>Video dell'esercizo: </b></p>
+                  <video controls >
+                    <source src="{{getExerciseVideoUrlByKey(exercise.exerciseKey)}}" type="video/mp4">
+
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+        <!-- BUTTON-->
+        <mat-action-row>
+          <button mat-raised-button color="accent" routerLink="/workout/update/{{ workout.key }}">Modifica</button>
+          <button mat-flat-button color="primary" (click)="openDialog(workout.key)">Elimina</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+  <!--EMPTY EXERCISE LIST-->
+  <div *ngIf="workouts.length==0">
+    <h3>Nessun Workout ancora caricato..</h3>
+  </div>
+</div>
+
+

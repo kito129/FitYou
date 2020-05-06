@@ -1,0 +1,263 @@
+<div fxFlex="100" fxLayout="column">
+  <!-- TITLE -->
+  <div fxLayout="row" fxLayoutGap="10px" fxFlexAlign="flex-start center">
+    <button mat-icon-button color="accent" aria-label="" routerLink="/client">
+      <mat-icon>arrow_back_ios</mat-icon>
+    </button>
+  <h1 class="mat-h1" style="padding-top: 10px">Matteo Bagnasco</h1>
+  </div>
+  <!--MAIN ROW WARP-->
+  <div fxLayout="column">
+    <!-- INFO -->
+    <ng-container>
+      <div fxLayout="row warp">
+        <!-- COL 1 -->
+        <!-- INFO -->
+        <div fxLayout="column"  fxFlex="50" fxFlex.lt-md="100">
+          <!-- title 1 -->
+          <h2 class="mat-h2" style="padding-top: 10px ">Info</h2>
+          <mat-divider  style="padding-bottom: 10px"></mat-divider>
+          <div fxLayout="column"  fxLayoutGap="10px">
+            <!-- info 1 -->
+            <div fxLayout="column">
+              <h3 class="mat-h3">Pacchetto Acquistato:</h3>
+              Pacchetto 1
+              Dieta Acquistata
+            </div>
+            <!-- info 2 -->
+            <div fxLayout="column">
+              <h3 class="mat-h3">Iscritto dal:</h3>
+              <p>18/03/2020</p>
+            </div>
+            <!-- info 3 -->
+            <div fxLayout="column">
+              <h3 class="mat-h3">Workout completati:</h3>
+              <p>25</p>
+            </div>
+          </div>
+        </div>
+        <!-- COL 2 -->
+        <!-- GRAPH -->
+        <div fxLayout="column"  fxFlex="50" fxFlex.lt-md="100">
+          <!-- title -->
+          <h2 class="mat-h2">Grafici</h2>
+          <mat-divider  style="padding-bottom: 10px"></mat-divider>
+          <!-- initial graph -->
+          <div fxLayout="column"  fxLayoutGap="10px">
+
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <!-- MESURE -->
+    <ng-container>
+      <!-- title -->
+      <h2 class="mat-h2" style="padding-top: 10px">Misure</h2>
+      <mat-divider  style="padding-bottom: 10px"></mat-divider>
+      <!-- initial mesure -->
+      <div fxLayout="column"  fxLayoutGap="10px">
+        <mat-accordion>
+          <!-- ROW 1 -->
+          <mat-expansion-panel (opened)="panelOpenState = true"
+                               (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                1 - Iniziali
+              </mat-panel-title>
+              <mat-panel-description>
+                <!-- date -->
+                <p>18/03/2020</p>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <!-- ROW  1-->
+            <div fxLayout="row warp">
+              <!-- COL 1-->
+              <div fxLayout="column"  fxFlex="40"  fxFlex.lt-sm="100">
+                <h2 class="mat-h2">Info: </h2>
+                <mat-divider  style="padding-bottom: 10px"></mat-divider>
+                <div fxLayout="row warp">
+                  <!-- info 1 -->
+                  <div fxLayout="column" fxFlex="50">
+                    <h3 class="mat-h3">Peso: </h3>
+                    <p>68 kg</p>
+                  </div>
+                  <!-- info 2 -->
+                  <div fxLayout="column"fxFlex="50">
+                    <h3 class="mat-h3">Ibm: </h3>
+                    <p>13.1 IBM</p>
+                  </div>
+                </div>
+                <!-- col 2 -->
+                <div fxLayout="row warp">
+                  <!-- info 3 -->CA
+                  <div fxLayout="column" fxFlex="50">
+                    <h3 class="mat-3">Punto Vita: </h3>
+                    <p>80 cm</p>
+                  </div>
+                  <!-- info 4 -->
+                  <div fxLayout="column" fxFlex="50">
+                    <h3 class="mat-h3">Petto: </h3>
+                    <p>103 cm</p>
+                  </div>
+                </div>
+              </div>
+              <!-- COL 2-->
+              <div fxLayout="column"  fxFlex="60"  fxFlex.lt-sm="100" fxFlexAlign="space-around space-around">
+                <h2 class="mat-h2">Fotografie: </h2>
+                <mat-divider  style="padding-bottom: 10px"></mat-divider>
+                <div fxLayout="row" fxLayoutGap="15px">
+                  <img mat-card-image src="../../../../assets/images/bagna/1.jpeg">
+                  <img mat-card-image src="../../../../assets/images/bagna/2.jpeg">
+                  <img mat-card-image src="../../../../assets/images/bagna/3.jpeg">
+                </div>
+
+
+              </div>
+            </div>
+            <!-- ROW  2-->
+            <div fxLayout="column">
+              <h2 class="mat-h2">Dettagli: </h2>
+              <mat-divider  style="padding-bottom: 10px"></mat-divider>
+              <!-- ROW WARP -->
+              <div fxLayout="row warp">
+                <!-- info 1 -->
+                <div fxLayout="column"  fxFlex.lt-sm="33" fxFlex.lt-md="25" fxFlex="16">
+                  <h3 class="mat-h3">Braccio: </h3>
+                  <p>68 cm</p>
+                </div>
+                <!-- info 2 -->
+                <div fxLayout="column"  fxFlex.lt-md="33" fxFlex.lt-lg="25" fxFlex="16">
+                  <h3 class="mat-h3">Petto: </h3>
+                  <p>100 cm</p>
+                </div>
+                <!-- info 3 -->
+                <div fxLayout="column"  fxFlex.lt-md="33" fxFlex.lt-lg="25" fxFlex="16">
+                  <h3 class="mat-h3">Bicipite DX:</h3>
+                  <p>60 cm</p>
+                </div>
+                <!-- info 4 -->
+                <div fxLayout="column"  fxFlex.lt-md="33" fxFlex.lt-lg="25" fxFlex="16">
+                  <h3 class="mat-h3">Bicipite SX:</h3>
+                  <p>60 cm</p>
+                </div>
+                <!-- info 5 -->
+                <div fxLayout="column"  fxFlex.lt-md="33" fxFlex.lt-lg="25" fxFlex="16">
+                  <h3 class="mat-h3">Femore DX</h3>
+                  <p>120 cm</p>
+                </div>
+                <!-- info 6 -->
+                <div fxLayout="column"  fxFlex.lt-md="33" fxFlex.lt-lg="25" fxFlex="16">
+                  <h3 class="mat-h3">Femore SX</h3>
+                  <p>125 cm</p>
+                </div>
+              </div>
+            </div>
+          </mat-expansion-panel>
+          <!-- ROW 2-->
+          <mat-expansion-panel (opened)="panelOpenState = true"
+                               (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                2 - Settimanale
+              </mat-panel-title>
+              <mat-panel-description>
+                  <!-- date -->
+                  <p>25/03/2020</p>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <!-- ROW  1-->
+            <div fxLayout="row warp">
+              <!-- COL 1-->
+              <div fxLayout="column"  fxFlex="40"  fxFlex.lt-sm="100">
+                <h2 class="mat-h2">Info: </h2>
+                <mat-divider  style="padding-bottom: 10px"></mat-divider>
+                <div fxLayout="row warp">
+                  <!-- info 1 -->
+                  <div fxLayout="column" fxFlex="50">
+                    <h3 class="mat-h3">Peso: </h3>
+                    <p>68 kg</p>
+                  </div>
+                  <!-- info 2 -->
+                  <div fxLayout="column"fxFlex="50">
+                    <h3 class="mat-h3">Ibm: </h3>
+                    <p>13.1 IBM</p>
+                  </div>
+                </div>
+                <!-- col 2 -->
+                <div fxLayout="row warp">
+                  <!-- info 3 -->
+                  <div fxLayout="column" fxFlex="50">
+                    <h3 class="mat-3">Punto Vita: </h3>
+                    <p>80 cm</p>
+                  </div>
+                  <!-- info 4 -->
+                  <div fxLayout="column" fxFlex="50">
+                    <h3 class="mat-h3">Petto: </h3>
+                    <p>103 cm</p>
+                  </div>
+                </div>
+              </div>
+              <!-- COL 2-->
+              <div fxLayout="column"  fxFlex="60"  fxFlex.lt-sm="100" fxFlexAlign="space-around space-around">
+                <h2 class="mat-h2">Fotografie: </h2>
+                <mat-divider  style="padding-bottom: 10px"></mat-divider>
+                <p>TEST </p>
+              </div>
+            </div>
+            <!-- ROW  2-->
+            <div fxLayout="column">
+              <h2 class="mat-h2">Dettagli: </h2>
+              <mat-divider  style="padding-bottom: 10px"></mat-divider>
+              <!-- ROW WARP -->
+              <div fxLayout="row warp">
+                <!-- info 1 -->
+                <div fxLayout="column"  fxFlex.lt-sm="33" fxFlex.lt-md="25" fxFlex="16">
+                  <h3 class="mat-h3">Info 1: </h3>
+                  <p>68 kg</p>
+                </div>
+                <!-- info 2 -->
+                <div fxLayout="column"  fxFlex.lt-md="33" fxFlex.lt-lg="25" fxFlex="16">
+                  <h3 class="mat-h3">Info 2: </h3>
+                  <p>68 kg</p>
+                </div>
+                <!-- info 3 -->
+                <div fxLayout="column"  fxFlex.lt-md="33" fxFlex.lt-lg="25" fxFlex="16">
+                  <h3 class="mat-h3">Info 3: </h3>
+                  <p>68 kg</p>
+                </div>
+                <!-- info 4 -->
+                <div fxLayout="column"  fxFlex.lt-md="33" fxFlex.lt-lg="25" fxFlex="16">
+                  <h3 class="mat-h3">Info 4: </h3>
+                  <p>68 kg</p>
+                </div>
+                <!-- info 5 -->
+                <div fxLayout="column"  fxFlex.lt-md="33" fxFlex.lt-lg="25" fxFlex="16">
+                  <h3 class="mat-h3">Info 5: </h3>
+                  <p>68 kg</p>
+                </div>
+                <!-- info 6 -->
+                <div fxLayout="column"  fxFlex.lt-md="33" fxFlex.lt-lg="25" fxFlex="16">
+                  <h3 class="mat-h3">Info 6: </h3>
+                  <p>68 kg</p>
+                </div>
+              </div>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </ng-container>
+    <!-- WORKOUT -->
+    <ng-container>
+      <!-- title -->
+      <h2 class="mat-h2" style="padding-top: 10px">Workout</h2>
+      <mat-divider  style="padding-bottom: 10px"></mat-divider>
+      <!-- initial workout -->
+      <div fxLayout="column">
+
+
+
+      </div>
+
+    </ng-container>
+  </div>
+</div>

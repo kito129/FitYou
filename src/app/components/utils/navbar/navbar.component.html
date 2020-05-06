@@ -1,0 +1,55 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav  #drawer class="sidenav" fixedInViewport
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'"
+               [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>
+      Menu
+    </mat-toolbar>
+    <!-- SIDE BAR MENU -->
+    <mat-nav-list>
+      <div routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+        <mat-accordion multi="false">
+          <a mat-list-item routerLink="/dashboard" routerLinkActive="active-list-item"><mat-icon style="padding: 5px;">dashboard</mat-icon>Dashboard</a>
+          <a mat-list-item routerLink="/exercise" routerLinkActive="active-list-item"><mat-icon style="padding: 5px;">emoji_people</mat-icon>Esercizi</a>
+          <a mat-list-item routerLink="/workout" routerLinkActive="active-list-item"><mat-icon style="padding: 5px;">directions_run</mat-icon>Workout</a>
+          <a mat-list-item routerLink="/meal" routerLinkActive="active-list-item"><mat-icon style="padding: 5px;">local_dining</mat-icon>Nutrizione</a>
+
+          <a mat-list-item routerLink="/client" routerLinkActive="active-list-item"><mat-icon style="padding: 5px;">dynamic_feed</mat-icon>Clienti</a>
+          <a mat-list-item routerLink="/chat" routerLinkActive="active-list-item"><mat-icon style="padding: 5px;">question_answer</mat-icon>Chat</a>
+          <a mat-list-item routerLink="/profile" routerLinkActive="active-list-item"><mat-icon style="padding: 5px;">account_box</mat-icon>Profilo</a>
+
+        </mat-accordion>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+  <!-- CONTENT -->
+  <mat-sidenav-content>
+    <!-- TOOLBAR -->
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>FitYou.app</span>
+
+    </mat-toolbar>
+    <!-- MAIN CONTENT -->
+    <main class="content">
+      <!-- BREADCRUMB -->
+      <app-ng7-dynamic-breadcrumb [bgColor]="breadcrumbConfig['bgColor']" [fontSize]="breadcrumbConfig['fontSize']" [fontColor]="breadcrumbConfig['fontColor']" [lastLinkColor]="breadcrumbConfig['lastLinkColor']" [symbol]="breadcrumbConfig['symbol']"></app-ng7-dynamic-breadcrumb>
+      <!-- MAIN -->
+      <div class="mainContainer">
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
+

@@ -1,0 +1,11 @@
+
+.description-text{
+  overflow: paged-x;
+  white-space: pre-line;
+  height: auto;
+  overflow-wrap: break-word;
+  padding-bottom: 20px;
+}
+
+
+

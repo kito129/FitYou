@@ -1,0 +1,78 @@
+/* CREATE PAGE */
+/*for create work out --  */
+.paramsExe{
+  width: 100px;
+
+}
+@media only screen and (max-width: 768px) {
+  .paramsExe{
+    width: 280px;
+
+  }
+
+  .params{
+    align-items: center;
+    align-content: center;
+    align-self: center;
+    alignment: center;
+  }
+}
+
+
+/* ASSIGN PAGE */
+/* radio button for week day choose */
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+.check-button {
+  margin: 5px;
+}
+
+video{
+  width: 300px;
+  height: 410px;
+}
+
+.description-text{
+  overflow: paged-x;
+  white-space: pre-line;
+  height: auto;
+  overflow-wrap: break-word;
+  padding-bottom: 20px;
+}
+
+.final-button{
+  width: 150px;
+}
+
+.button{
+  align-items: center;
+  align-content: center;
+  align-self: center;
+  alignment: center;
+}
+
+mat-list-item{
+  width: 100%;
+  border: solid 1px whitesmoke;
+  display: block;
+  background: -moz-mac-accentdarkestshadow;
+  border-radius: 4px;
+
+}
+
+.description-form{
+  width: 90%;
+}
+
+.info{
+  align-items: center;
+  align-content: center;
+  align-self: center;
+  alignment: center;
+}
+
+
+

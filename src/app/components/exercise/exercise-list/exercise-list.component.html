@@ -1,0 +1,68 @@
+<!--MAIN ROW WARP-->
+<div fxLayout="column" fxLayoutGap="15px">
+  <!--TITLE ROW -->
+  <div  fxLayout="row">
+    <button mat-raised-button color="primary" routerLink="/exercise/create/">Crea Nuovo</button>
+  </div>
+  <mat-divider  style="padding-bottom: 10px"></mat-divider>
+  <!-- MAIN ROW-->
+  <div  fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutGap="25px" fxFlexAlign.lt-md="center">
+    <!--CARD OF EXERCISE-->
+      <mat-card *ngFor="let exe of exercises" >
+        <!--TITLE SECTION-->
+        <mat-card-header>
+          <mat-card-title>{{ exe.name }}</mat-card-title>
+          <mat-card-subtitle></mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content >
+          <div  fxLayout="column" fxLayoutGap="15px">
+            <!--VIDEO SECTION-->
+            <div  fxLayout="column">
+              <video controls >
+                <source src="{{exe.urlLink}}" type="video/mp4">
+
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <!--DESCRIPTION SECTION-->
+            <div fxLayout="row">
+              <div fxFlex="90" fxLayout="column" [ngClass]="getDescriptionById(exe.key)" >
+                {{exe.description}}
+              </div>
+              <div fxFlex="10" fxLayout="column" *ngIf="getNewLineById(exe.key) === 'true'">
+                <button mat-icon-button aria-label="expand description text" (click)="changeDescription(exe.key)">
+                  <mat-icon>{{getIconById(exe.key)}}</mat-icon>
+                </button>
+              </div>
+            </div>
+            <!--DATA SECTION-->
+            <div fxLayout="row" fxLayoutGap="5px" style="color: darkgray">
+              <p>Creato il:</p>
+              <p>{{ exe.dateCreated | date:'short'}}</p>
+            </div>
+            <div fxLayout="row" fxLayoutGap="5px" style="color: darkgray">
+              <p>Ultima modifica:</p>
+              <p *ngIf="exe.dateCreated===exe.lastUpdate"> - </p>
+              <p *ngIf="exe.dateCreated!=exe.lastUpdate">{{ exe.lastUpdate | date:'short'}}</p>
+            </div>
+          </div>
+        </mat-card-content>
+        <!--BUTTON SECTION-->
+        <mat-card-actions fxLayoutGap="15px">
+          <button mat-flat-button color="accent" routerLink="/exercise/update/{{ exe.key }}">Modifica</button>
+          <button mat-flat-button color="primary" (click)="openDialog(exe.key,exe.urlLink)">Elimina</button>
+        </mat-card-actions>
+      </mat-card>
+  </div>
+  <!--EMPTY EXERCISE LIST-->
+  <div *ngIf="exercises.length==0">
+    <h3>Nessun Esercizio ancora caricato..</h3>
+  </div>
+
+
+</div>
+
+
+
+
+

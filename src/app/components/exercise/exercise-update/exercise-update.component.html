@@ -1,0 +1,88 @@
+<div fxFlex="100" fxLayout="row warp">
+  <!-- COLUMN 1-->
+  <div fxFlex="50" fxFlex.lt-md="100" fxLayout="column"fxLayoutGap="10px">
+    <h2 class="mat-h2">Info</h2>
+    <mat-divider  style="padding-bottom: 10px"></mat-divider>
+
+    <!-- ROW 1-->
+    <div fxLayout="column">
+      <form #exerciseUpdateForm="ngForm"  fxLayoutGap="15px">
+        <mat-form-field class="full-width" >
+          <mat-label>Nome</mat-label>
+          <label>
+            <input matInput [(ngModel)]="exercise.name" name="name" type="text" required #name="ngModel">
+          </label>
+        </mat-form-field>
+        <div [hidden]="name.valid || name.pristine"
+             class="alert">
+          Nome richiesto
+        </div>
+        <!-- description -->
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Descrizione</mat-label>
+          <label>
+            <textarea
+              cdkTextareaAutosize
+              #autosize="cdkTextareaAutosize"
+              cdkAutosizeMinRows="3"
+              matInput [(ngModel)]="exercise.description" name="description" required #description="ngModel"> </textarea>
+          </label>
+        </mat-form-field>
+        <div [hidden]="description.valid || description.pristine"
+             class="alert">
+          Descrizione richiesta
+        </div>
+      </form>
+    </div>
+
+    <div fxLayout="column" fxLayoutGap="15px">
+      <mat-checkbox (change)="changeStateVideo()">Non modificare il video</mat-checkbox>
+      <!-- edit video section-->
+      <div *ngIf="editVideo == false"  fxLayout="column" fxLayoutGap="15px">
+        <input type="file" (change)="onFileSelected($event)">
+        <button mat-raised-button color="warn"  style="width: 160px" (click)="uploadClick()" [disabled]="disableUploadedVideo"> <mat-icon style="padding-right: 5px">cloud_upload</mat-icon> Upload video</button>
+        <div  *ngIf="progressBar==true" >
+          <mat-progress-bar mode="determinate" [value]="progress"></mat-progress-bar>
+        </div>
+        <div  *ngIf="uploadedVideoConfirm==true" >
+          <p>Video caricato!</p>
+        </div>
+      </div>
+    </div>
+    <!-- ROW 5-->
+    <div fxLayout="row" fxLayoutGap="15 px">
+      <button mat-raised-button color="primary" style="width: 160px" [disabled]="!(disabledUpdate && exerciseUpdateForm.form.valid)" (click)="updateClick()" type="submit">Aggiorna Esercizio </button>
+      <button mat-raised-button color="accent" routerLink="/exercise" style="width: 160px"> Annulla </button>
+    </div>
+  </div>
+  <!-- COLUMN 2-->
+  <div fxFlex="50" fxFlex.lt-md="100" fxLayout="column" fxLayoutGap="10px">
+    <h2 class="mat-h2 ">Anteprima</h2>
+    <mat-divider  style="padding-bottom: 10px"></mat-divider>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>{{exercise.name}}</mat-card-title>
+        <mat-card-subtitle>{{exercise.dateCreated | date:'short'}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div fxFlex="100" fxLayout="column" fxLayoutGap="10px">
+          <div fxFlex="100" fxLayout="row">
+            <video controls>
+              <source src="{{exercise.urlLink}}" type="video/mp4" />
+
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div fxFlex="100" fxLayout="row">
+          <p class="updateDescription">
+            {{exercise.description}}
+          </p>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+
+

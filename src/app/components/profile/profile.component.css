@@ -1,0 +1,9 @@
+
+img {
+  width: 90px;
+  height: 90px;
+  -webkit-clip-path: circle(50.0% at 50% 50%);
+  clip-path: circle(50.0% at 50% 50%);
+}
+
+

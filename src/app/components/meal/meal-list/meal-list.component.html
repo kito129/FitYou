@@ -1,0 +1,52 @@
+<div fxLayout="column" fxLayoutGap="15px">
+  <!--TITLE ROW -->
+  <div  fxLayout="row">
+    <button mat-raised-button color="primary" routerLink="/meal/create/">Crea Nuovo</button>
+  </div>
+  <mat-divider  style="padding-bottom: 10px"></mat-divider>
+  <!-- MAIN ROW-->
+  <div fxLayout="column" >
+    <mat-accordion>
+
+      <mat-expansion-panel (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false"
+                           *ngFor="let meal of meals"
+      >
+        <!-- WORKOUT MAIN INFO-->
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{meal.name}}
+          </mat-panel-title>
+          <mat-panel-description>
+            {{meal.clientKey}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <!-- INFO WORK OUT -->
+        <div fxLayout="column" fxLayoutAlign="baseline" fxLayoutGap="6px" >
+
+          <h3 class="mat-h3">Cliente:</h3>
+          <p class="description-text"> {{meal.clientKey}}</p>
+
+          <h3 class="mat-h3">Descrizione:</h3>
+          <p class="description-text"> {{meal.description}}</p>
+
+
+
+
+
+        </div>
+        <!-- BUTTON-->
+        <mat-action-row>
+          <button mat-raised-button color="accent" routerLink="/meal/update/{{ meal.key }}">Modifica</button>
+          <button mat-flat-button color="primary" (click)="openDialog(meal.key)">Elimina</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+  <!--EMPTY EXERCISE LIST-->
+  <div *ngIf="meals.length==0">
+    <h3>Nessun piano nutrizionale ancora caricato..</h3>
+  </div>
+  <!-- END MAIN DIV -->
+</div>
+

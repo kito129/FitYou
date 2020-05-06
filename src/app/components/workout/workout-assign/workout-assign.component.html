@@ -1,0 +1,81 @@
+<div fxFlex="100" fxLayout="column" style="padding: 5px;">
+  <!-- TITLE -->
+  <h1 class="mat-h1" style="padding-top: 10px">Assegna Allenamento</h1>
+  <!-- MAIN ROW -->
+  <div fxFlex="100"  fxFlex.lt-md="100" fxLayoutGap="10px" fxLayout="column" style="margin-right: 5px">
+    <!-- WORK OUT INFO -->
+    <!-- SELECTION INFO -->
+    <!--title -->
+    <h2 class="mat-h2" style="padding-top: 10px; padding-bottom: 10px; ">Cliente</h2>
+    <mat-divider></mat-divider>
+    <!--work out -->
+    <mat-form-field>
+      <mat-label>Seleziona allenamento</mat-label>
+      <mat-select [(value)]="sel">
+        <mat-option>None</mat-option>
+        <mat-option value="1 - Allenamento Massa">1 - Allenamento Massa </mat-option>
+        <mat-option value="2 - All Base">2 - All Base</mat-option>
+        <mat-option value="3 - Spalle intensivo">3 - Spalle intensivo</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <!-- client -->
+    <mat-form-field>
+      <mat-label>Seleziona cliente</mat-label>
+      <mat-select [(value)]="sel2">
+        <mat-option>None</mat-option>
+        <mat-option value="Matteo Bagnasco">Matteo Bagnasco</mat-option>
+        <mat-option value="Kevin Della Piazza">Kevin Della Piazza</mat-option>
+        <mat-option value="Martinetti Ferma">Martinetti Ferma</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- ASSIGN SECTION  -->
+    <!-- title  -->
+    <h3 class="mat-h3">Assegna:</h3>
+    <p>{{sel}}  --> {{sel2}}</p>
+
+
+    <!-- ASSIGN SETTING -->
+    <!-- params assign setting -->
+    <h3 class="mat-h3">Info:</h3>
+    <!-- 2 cols params-->
+    <div fxFlex="100" fxLayoutGap="10px" fxLayout="column">
+      <!-- from -->
+      <div fxFlex>
+        <mat-form-field>
+          <mat-label>Valido Dal</mat-label>
+          <input matInput [matDatepicker]="picker1">
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <!-- to -->
+      <div fxFlex>
+        <mat-form-field>
+          <mat-label>Fino al</mat-label>
+          <input matInput [matDatepicker]="picker2">
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+    <!-- week day params-->
+    <div fxFlex="100" fxLayoutGap="10px" fxLayout="column">
+      <h3 class="mat-h3">Settimana:</h3>
+      <!-- week day selection -->
+      <div fxFlex="100" fxLayoutGap="5px" fxLayout="row warp">
+          <mat-checkbox class="check-button" value="mon">Lunedì</mat-checkbox>
+          <mat-checkbox class="check-button" value="tue">Martedì</mat-checkbox>
+          <mat-checkbox class="check-button" value="wed">Mercoledì</mat-checkbox>
+          <mat-checkbox class="check-button" value="thu">Giovedì</mat-checkbox>
+          <mat-checkbox class="check-button" value="fri">Venerdì</mat-checkbox>
+          <mat-checkbox class="check-button" value="sat">Sabato</mat-checkbox>
+          <mat-checkbox class="check-button" value="sun">Domenica</mat-checkbox>
+      </div>
+    </div>
+    <!-- BUTTON SECTION-->
+    <div  fxFlex="100"  fxLayoutGap="35px" fxLayoutAlign="center center" fxLayout="row">
+      <button mat-raised-button color="primary">Assegna</button>
+    </div>
+  </div>
+</div>
